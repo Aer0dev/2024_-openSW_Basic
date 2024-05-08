@@ -14,3 +14,22 @@ config/name="BabaIsYou_Godot"
 run/main_scene="res://Scenes/test_stage.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Sprites/icon.svg"
+
+[input]
+
+move_right={
+"deadzone": 0.5,
+"events": []
+}
+move_left={
+"deadzone": 0.5,
+"events": []
+}
+move_up={
+"deadzone": 0.5,
+"events": []
+}
+move_down={
+"deadzone": 0.5,
+"events": []
+}

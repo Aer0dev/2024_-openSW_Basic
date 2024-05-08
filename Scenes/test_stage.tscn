@@ -10,6 +10,7 @@
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 up_direction = Vector2(0.707107, 0.707107)
 script = ExtResource("1_00xs2")
+Speed = null
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(667, 319)
