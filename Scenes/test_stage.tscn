@@ -1,21 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c013kphihdk7b"]
+[gd_scene load_steps=2 format=3 uid="uid://c013kphihdk7b"]
 
-[ext_resource type="Script" path="res://Scenes/PlayerMovement.gd" id="1_00xs2"]
-[ext_resource type="Texture2D" uid="uid://ckftub8sypfxg" path="res://Sprites/icon.svg" id="1_gfn4e"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3v8l"]
+[ext_resource type="PackedScene" uid="uid://hmebhprsipv0" path="res://Assets/Character/baba.tscn" id="1_85y2k"]
 
 [node name="TestStage" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-up_direction = Vector2(0.707107, 0.707107)
-script = ExtResource("1_00xs2")
-Speed = null
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(667, 319)
-texture = ExtResource("1_gfn4e")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("RectangleShape2D_x3v8l")
-debug_color = Color(0.940879, 0.0336914, 0.59801, 0.42)
+[node name="Baba" parent="." instance=ExtResource("1_85y2k")]
+position = Vector2(665, 231)
