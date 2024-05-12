@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c013kphihdk7b"]
 
-[ext_resource type="PackedScene" uid="uid://hmebhprsipv0" path="res://Assets/Character/baba.tscn" id="1_85y2k"]
+[ext_resource type="PackedScene" uid="uid://hmebhprsipv0" path="res://Assets/Character/baba/baba.tscn" id="1_85y2k"]
 
 [node name="TestStage" type="Node2D"]
 

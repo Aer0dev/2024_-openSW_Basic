@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://hmebhprsipv0"]
 
 [ext_resource type="Texture2D" uid="uid://ckftub8sypfxg" path="res://Sprites/icon.svg" id="1_kr5rk"]
-[ext_resource type="Script" path="res://Assets/Character/baba.gd" id="1_npt83"]
+[ext_resource type="Script" path="res://Assets/Character/baba/baba.gd" id="1_npt83"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxcvd"]
 
