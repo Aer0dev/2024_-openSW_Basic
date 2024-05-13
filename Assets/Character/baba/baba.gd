@@ -1,14 +1,20 @@
 extends CharacterBody2D
 
-@export var move_speed : float = 100
+var curPos = [0,0]
 
-func _physics_process(_delta):
-	var input_direction = Vector2(
-		Input.get_action_strength("right") - Input.get_action_strength("left"), 
-		Input.get_action_strength("down") - Input.get_action_strength("up")
-	) 
-	print(input_direction)
-
-	velocity = input_direction * move_speed
+func _input(event):
+	if event.is_action_pressed("right"):
+		curPos[0] += 32
+	elif event.is_action_pressed("left"):
+		curPos[0] -= 32
+	elif event.is_action_pressed("up"):
+		curPos[1] -= 32
+	elif event.is_action_pressed("down"):
+		curPos[1] += 32
+			
 	
-	move_and_slide()
+	
+	
+	
+	self.position = Vector2(curPos[0], curPos[1])	
+	
