@@ -1,0 +1,13 @@
+[remap]
+
+importer="MagicaVoxel-Importer"
+type="Mesh"
+path="res://.import/truck4.vox-75e5d05e9ed0c3d1c08119fd2e5a96f4.mesh"
+
+[deps]
+
+source_file="res://VOX/trucks/truck4.vox"
+dest_files=[ "res://.import/truck4.vox-75e5d05e9ed0c3d1c08119fd2e5a96f4.mesh" ]
+
+[params]
+

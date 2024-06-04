@@ -1,0 +1,13 @@
+[remap]
+
+importer="MagicaVoxel-Importer"
+type="Mesh"
+path="res://.import/car2.vox-e17ea2bdcbe92ee81c98993ee8292de9.mesh"
+
+[deps]
+
+source_file="res://VOX/cars/car2.vox"
+dest_files=[ "res://.import/car2.vox-e17ea2bdcbe92ee81c98993ee8292de9.mesh" ]
+
+[params]
+

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://VOX/terrain/grass.vox" type="ArrayMesh" id=1]
+
+[node name="Spatial" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0025959, 0.0189905, 0.000811577 )
+
+[node name="grass" type="MeshInstance" parent="."]
+transform = Transform( 0.992312, 0, 0, 0, 0.992312, 0, 0, 0, 0.992312, 0, 0, 0 )
+mesh = ExtResource( 1 )
