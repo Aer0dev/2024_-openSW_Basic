@@ -7,7 +7,8 @@ enum {
 	LINE = 2
 }
 
-
+var new_line := 40
+var old_line := -5
 
 func _ready():
 	redraw_board()
@@ -16,10 +17,22 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		redraw_board()
 
-
+func add_line():
+	var previous = $GridMap.get_cell_item(0, 0, new_line)
+	var i = check_next(previous)
+	new_line += 1
+	for x in range(-10, 10):
+		
+		$GridMap.set_cell_item(x, 0, new_line+1, i)
+		
+func del_line():
+	for x in range(-10, 10):
+		$GridMap.set_cell_item(x, 0, old_line, -1)		
+		yield(get_tree(), "idle_frame" )
+	old_line+=1
 func redraw_board()->void:
 	$GridMap.clear()
-	for z in range(-5, 40):
+	for z in range(old_line, new_line):
 		var i: int
 		
 		if z <= 5:
@@ -29,7 +42,7 @@ func redraw_board()->void:
 			i = check_next(previous)
 			
 		for x in range(-10, 10):
-			$GridMap.set_cell_item(x, 0, z, i)#Grass 가지고옴
+			$GridMap.set_cell_item(x, 0, z, i)
 
 func check_next(previous:int)->int:
 	var i:int

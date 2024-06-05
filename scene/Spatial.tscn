@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://MeshLib/terrain_0.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://scripts/scene_base.gd" type="Script" id=2]
+[ext_resource path="res://scene/camera.gd" type="Script" id=3]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -19,10 +20,13 @@ __meta__ = {
 "_editor_clip_": 0
 }
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.84034, 0.243904, -0.484087, 0, 0.89305, 0.449958, 0.54206, 0.378118, -0.750465, -3.10329, 22.8845, -4.81094 )
-fov = 100.0
-
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
 mesh = SubResource( 1 )
+
+[node name="cam" type="KinematicBody" parent="."]
+script = ExtResource( 3 )
+
+[node name="Camera" type="Camera" parent="cam"]
+transform = Transform( -0.84034, 0.243904, -0.484087, 0, 0.89305, 0.449958, 0.54206, 0.378118, -0.750465, -3.10329, 22.8845, -4.81094 )
+fov = 100.0
