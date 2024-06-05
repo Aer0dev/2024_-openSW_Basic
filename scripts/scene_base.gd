@@ -9,6 +9,10 @@ enum {
 
 var new_line := 40
 var old_line := -5
+var z_player := 0 
+var z_cam := 0
+
+onready var _spawner = preload("res://prefabs/Spawner.tscn")
 
 func _ready():
 	redraw_board()
@@ -21,6 +25,9 @@ func add_line():
 	var previous = $GridMap.get_cell_item(0, 0, new_line)
 	var i = check_next(previous)
 	new_line += 1
+	if i in [ROAD, LINE]:
+		add_spawner(new_line)
+	
 	for x in range(-10, 10):
 		
 		$GridMap.set_cell_item(x, 0, new_line+1, i)
@@ -30,6 +37,7 @@ func del_line():
 		$GridMap.set_cell_item(x, 0, old_line, -1)		
 		yield(get_tree(), "idle_frame" )
 	old_line+=1
+	
 func redraw_board()->void:
 	$GridMap.clear()
 	for z in range(old_line, new_line):
@@ -40,9 +48,26 @@ func redraw_board()->void:
 		else : 
 			var previous = $GridMap.get_cell_item(0, 0, z-1)
 			i = check_next(previous)
+		
+		if i in [ROAD, LINE]:
+			add_spawner(z)
+			var spawner = _spawner.instance()
+			add_child(spawner)
+			spawner.translation = Vector3(40, 2, (z*2)+1)
 			
 		for x in range(-10, 10):
 			$GridMap.set_cell_item(x, 0, z, i)
+
+func add_spawner(line)->void:
+	var side = rand_array([-1, 1])
+	var time = rand_range(2.0, 5.0)
+	var speed = rand_range(10.0, 15.0) * - side
+	
+	var spawner = _spawner.instance()
+	add_child(spawner)
+	spawner.translation = Vector3(40 * rand_array([-1, 1]), 2, (line*2)+1)
+	spawner.start(speed, time)
+
 
 func check_next(previous:int)->int:
 	var i:int

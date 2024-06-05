@@ -1,6 +1,6 @@
 [remap]
 
-importer="MagicaVoxel-Importer"
+importer="MagicaVoxel.With.Extensions"
 type="Mesh"
 path="res://.import/car1.vox-f6624f86740d9ccfd31bcbe6d7479bfc.mesh"
 
@@ -11,3 +11,6 @@ dest_files=[ "res://.import/car1.vox-f6624f86740d9ccfd31bcbe6d7479bfc.mesh" ]
 
 [params]
 
+Scale=0.2
+GreedyMeshGenerator=true
+SnapToGround=false
