@@ -7,7 +7,7 @@ enum {
 	LINE = 2
 }
 
-var new_line := 40
+var new_line := 30
 var old_line := -5
 var z_player := 0 
 var z_cam := 0
@@ -25,15 +25,15 @@ func add_line():
 	var previous = $GridMap.get_cell_item(0, 0, new_line)
 	var i = check_next(previous)
 	new_line += 1
+	
 	if i in [ROAD, LINE]:
 		add_spawner(new_line)
 	
-	for x in range(-10, 10):
-		
-		$GridMap.set_cell_item(x, 0, new_line+1, i)
+	for x in range(-1, 1):
+		$GridMap.set_cell_item(x, 0, new_line, i)
 		
 func del_line():
-	for x in range(-10, 10):
+	for x in range(-1, 1):
 		$GridMap.set_cell_item(x, 0, old_line, -1)		
 		yield(get_tree(), "idle_frame" )
 	old_line+=1
@@ -55,7 +55,7 @@ func redraw_board()->void:
 			add_child(spawner)
 			spawner.translation = Vector3(40, 2, (z*2)+1)
 			
-		for x in range(-10, 10):
+		for x in range(-1, 1):
 			$GridMap.set_cell_item(x, 0, z, i)
 
 func add_spawner(line)->void:
@@ -65,7 +65,7 @@ func add_spawner(line)->void:
 	
 	var spawner = _spawner.instance()
 	add_child(spawner)
-	spawner.translation = Vector3(40 * rand_array([-1, 1]), 2, (line*2)+1)
+	spawner.translation = Vector3(30 * side, 2, (line*2)+1)
 	spawner.start(speed, time)
 
 
