@@ -1,0 +1,16 @@
+[remap]
+
+importer="MagicaVoxel.With.Extensions"
+type="Mesh"
+path="res://.import/car4.vox-f48f0344090edc6a914c24f4a82f8ed2.mesh"
+
+[deps]
+
+source_file="res://Assets/cars/car4.vox"
+dest_files=[ "res://.import/car4.vox-f48f0344090edc6a914c24f4a82f8ed2.mesh" ]
+
+[params]
+
+Scale=0.2
+GreedyMeshGenerator=true
+SnapToGround=false

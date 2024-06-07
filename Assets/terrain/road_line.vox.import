@@ -1,0 +1,16 @@
+[remap]
+
+importer="MagicaVoxel.With.Extensions"
+type="Mesh"
+path="res://.import/road_line.vox-2d8db93f5ab5760a12bbbe84d74dfa99.mesh"
+
+[deps]
+
+source_file="res://Assets/terrain/road_line.vox"
+dest_files=[ "res://.import/road_line.vox-2d8db93f5ab5760a12bbbe84d74dfa99.mesh" ]
+
+[params]
+
+Scale=0.2
+GreedyMeshGenerator=true
+SnapToGround=false

@@ -8,7 +8,7 @@
 albedo_color = Color( 0.835294, 0.247059, 1, 1 )
 
 [node name="Spawner" type="Spatial"]
-transform = Transform( 0.999997, 0.00194902, -0.00169888, -0.00195355, 0.999995, -0.00266953, 0.00169367, 0.00267285, 0.999995, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
