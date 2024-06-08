@@ -1,0 +1,16 @@
+[remap]
+
+importer="MagicaVoxel.With.Extensions"
+type="Mesh"
+path="res://.import/truck2.vox-20b1205e7a599f09d1da54f5f187bab9.mesh"
+
+[deps]
+
+source_file="res://Assets/cars/truck2.vox"
+dest_files=[ "res://.import/truck2.vox-20b1205e7a599f09d1da54f5f187bab9.mesh" ]
+
+[params]
+
+Scale=0.2
+GreedyMeshGenerator=true
+SnapToGround=true

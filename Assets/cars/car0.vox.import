@@ -13,4 +13,4 @@ dest_files=[ "res://.import/car0.vox-27c11695e645dac6bde24c5631d3f321.mesh" ]
 
 Scale=0.2
 GreedyMeshGenerator=true
-SnapToGround=false
+SnapToGround=true
