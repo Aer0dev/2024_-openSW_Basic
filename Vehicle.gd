@@ -16,7 +16,7 @@ func add_list():
 			car_list.append(file)
 	
 	dir.list_dir_end()
-	print(car_list)
+	#print(car_list)
 
 func start(speed:float) -> void:
 	add_list()

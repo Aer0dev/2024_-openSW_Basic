@@ -11,15 +11,21 @@ var new_line := 30
 var old_line := -5
 var z_player := 0 
 var z_cam := 0
+var gamestart := false
 
 onready var _spawner = preload("res://prefabs/Spawner.tscn")
 
 func _ready():
 	redraw_board()
+	Engine.time_scale = 0 
+	
+func _startGame():
+	Engine.time_scale = 1
+	gamestart = true
 	
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		redraw_board()
+	if event.is_action_pressed("ui_accept") && gamestart == false:
+		_startGame()
 
 func add_line():
 	var previous = $GridMap.get_cell_item(0, 0, new_line)
