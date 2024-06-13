@@ -7,7 +7,7 @@
 
 [node name="Vehicle" type="KinematicBody"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
-collision_layer = 2
+collision_layer = 3
 script = ExtResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]

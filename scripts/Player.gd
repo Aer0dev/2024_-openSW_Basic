@@ -4,7 +4,16 @@ var is_moving := false
 var is_rotating := false
 var changeScale := false
 
+var point := 0
+var prev_z := 0
+
 var dir := Vector3.ZERO
+
+
+func _ready():
+	point = 0
+	prev_z = self.translation.z
+	connect("body_entered", self, "_on_Area_body_entered")
 
 func _physics_process(delta: float)->void:
 	var r0 :float= $MeshInstance.rotation_degrees.y
@@ -47,6 +56,12 @@ func _physics_process(delta: float)->void:
 		$tw.start()
 		yield($tw, "tween_all_completed")
 		is_moving = false
+		
+		if int(self.translation.z) > prev_z:
+			point += 1
+			print("point: %d" % point)
+			prev_z = self.translation.z
+		
 	
 	if not changeScale:
 		changeScale = true
@@ -57,3 +72,7 @@ func _physics_process(delta: float)->void:
 		$tw_b.start()
 		yield($tw_b, "tween_all_completed")
 		changeScale = false
+
+func _on_Area_body_entered(body: Node)->void:
+	print("col")
+	get_tree().reload_current_scene()

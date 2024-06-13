@@ -22,11 +22,18 @@ func _ready():
 func _startGame():
 	Engine.time_scale = 1
 	gamestart = true
+func _stopGame():
+	Engine.time_scale = 0
+func _restartGame():
+	get_tree().reload_current_scene()
 	
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept") && gamestart == false:
+	if event is InputEventKey && gamestart == false:	#맨처음에 아무키나 입력이 들어와야 게임이 시작되도록 변경함
 		_startGame()
-
+	if event.is_action_pressed("Restart"):		#R키 눌러서 게임 재시작
+		_restartGame()
+	if event.is_action_pressed("ui_cancel"):	#ESC누르면 일시정지
+		_stopGame()
 func add_line():
 	var previous = $GridMap.get_cell_item(0, 0, new_line)
 	var i = check_next(previous)

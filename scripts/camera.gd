@@ -17,7 +17,7 @@ func _physics_process(_delta:float) -> void:
 	
 	if diff > 5:
 		ratio = diff / 2		
-	print(diff)
+	#print(diff)
 	
 	vel = lerp(vel, (speed + ratio) * Vector3.BACK, 0.8)
 	vel = move_and_slide(vel)
@@ -27,4 +27,4 @@ func _physics_process(_delta:float) -> void:
 		get_parent().add_line()
 		get_parent().del_line()
 		get_parent().z_cam = old_line
-		print(new_line)
+		#print(new_line)
