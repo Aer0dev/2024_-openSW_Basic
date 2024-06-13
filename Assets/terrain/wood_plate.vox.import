@@ -1,0 +1,16 @@
+[remap]
+
+importer="MagicaVoxel.With.Extensions"
+type="Mesh"
+path="res://.import/wood_plate.vox-3b9f8e4f2bcc703e40f37dd6accab207.mesh"
+
+[deps]
+
+source_file="res://Assets/terrain/wood_plate.vox"
+dest_files=[ "res://.import/wood_plate.vox-3b9f8e4f2bcc703e40f37dd6accab207.mesh" ]
+
+[params]
+
+Scale=0.2
+GreedyMeshGenerator=true
+SnapToGround=false
