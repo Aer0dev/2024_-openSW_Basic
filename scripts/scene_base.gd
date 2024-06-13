@@ -5,6 +5,7 @@ enum {
 	GRASS = 0,
 	ROAD = 1,
 	LINE = 2
+	WATER = 3
 }
 
 var new_line := 30

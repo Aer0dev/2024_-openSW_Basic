@@ -1,0 +1,16 @@
+[remap]
+
+importer="MagicaVoxel.With.Extensions"
+type="Mesh"
+path="res://.import/water_block.vox-a1f9604f0ad659decbb353f4ea530922.mesh"
+
+[deps]
+
+source_file="res://Assets/terrain/water_block.vox"
+dest_files=[ "res://.import/water_block.vox-a1f9604f0ad659decbb353f4ea530922.mesh" ]
+
+[params]
+
+Scale=0.2
+GreedyMeshGenerator=true
+SnapToGround=false
