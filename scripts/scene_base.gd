@@ -13,10 +13,12 @@ var old_line := -5
 var z_player := 0 
 var z_cam := 0
 var gamestart := false
+var car_list:Array = []
 
 onready var _spawner = preload("res://prefabs/Spawner.tscn")
 
 func _ready():
+	add_list()
 	redraw_board()
 	Engine.time_scale = 0 
 	
@@ -84,6 +86,12 @@ func redraw_board()->void:
 			$GridMap.set_cell_item(x, 0, z, i)
 
 func add_spawner(line)->void:
+	var line_type = $GridMap.get_cell_item(0, 0, line)
+	
+	# 라인이 WATER 타입인 경우, 함수 실행을 중지합니다
+	if line_type == WATER:
+		return
+	
 	var side = rand_array([-1, 1])
 	var time = rand_range(2.0, 5.0)
 	var speed = rand_range(10.0, 15.0) * - side
@@ -125,3 +133,20 @@ func player_height(pos_z)->float:
 func rand_array(list:Array)->int:
 	randomize()
 	return list[randi()%list.size()]
+
+func add_list():
+	var dir = Directory.new()
+	dir.open("res://Assets/cars/")
+	dir.list_dir_begin()
+	
+	while true:
+		var file : String = dir.get_next()
+		if file == "":
+			break
+		elif file.ends_with(".vox"):
+			car_list.append(file)
+	
+	dir.list_dir_end()
+	
+func rand_car()->String:
+	return "res://Assets/cars/" +car_list[randi()%car_list.size()]

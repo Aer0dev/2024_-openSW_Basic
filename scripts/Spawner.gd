@@ -15,6 +15,6 @@ func _on_Timer_timeout():
 		var vehicle = _vehicle.instance()
 		get_parent().add_child(vehicle)
 		vehicle.global_transform.origin = self.global_transform.origin
-		vehicle.start(speed)
+		vehicle.start(speed, get_parent().rand_car())
 
 
