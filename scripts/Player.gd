@@ -11,7 +11,7 @@ var dir := Vector3.ZERO
 
 
 func _ready():
-	point = 0
+	Global.score = 0
 	prev_z = self.translation.z
 	connect("body_entered", self, "_on_Area_body_entered")
 
@@ -58,8 +58,8 @@ func _physics_process(delta: float)->void:
 		is_moving = false
 		
 		if int(self.translation.z) > prev_z:
-			point += 1
-			print("point: %d" % point)
+			Global.score += 1
+			print("point: %d" % Global.score)
 			prev_z = self.translation.z
 		
 	
