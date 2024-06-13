@@ -40,7 +40,7 @@ func add_line():
 	var i = check_next(previous)
 	new_line += 1
 	
-	if i in [ROAD, LINE]:
+	if i in [ROAD, LINE, WATER]:
 		add_spawner(new_line)
 		
 	if i == GRASS:
@@ -107,7 +107,7 @@ func check_next(previous:int)->int:
 	
 	match previous:
 		GRASS:
-			i = rand_array([GRASS, LINE, ROAD])
+			i = rand_array([GRASS, LINE, ROAD, WATER])
 		ROAD:
 			i = GRASS
 		LINE:
