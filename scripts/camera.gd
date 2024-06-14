@@ -17,6 +17,8 @@ func _physics_process(_delta:float) -> void:
 	
 	if diff > 5:
 		ratio = diff / 2		
+	elif diff < -10:
+		get_tree().reload_current_scene()
 	#print(diff)
 	
 	vel = lerp(vel, (speed + ratio) * Vector3.BACK, 0.8)

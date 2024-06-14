@@ -41,6 +41,7 @@ speed = 3.0
 
 [node name="MeshInstance" type="MeshInstance" parent="cam"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0470001, 4, -2 )
+visible = false
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")
 material/0 = SubResource( 2 )
