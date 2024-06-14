@@ -15,6 +15,7 @@ var z_cam := 0
 var gamestart := false
 var car_list:Array = []
 
+onready var player = $Player 
 onready var _spawner = preload("res://prefabs/Spawner.tscn")
 
 func _ready():
@@ -83,8 +84,6 @@ func redraw_board()->void:
 			$GridMap.set_cell_item(x, 0, z, i)
 
 func add_spawner(line)->void:
-	
-	
 	var side = rand_array([-1, 1])
 	var time = rand_range(2.0, 5.0)
 	var speed = rand_range(10.0, 15.0) * - side
@@ -143,3 +142,16 @@ func add_list():
 	
 func rand_car()->String:
 	return "res://Assets/cars/" +car_list[randi()%car_list.size()]
+
+func check_player_on_water():
+	var player_pos = player.translation
+	var map_pos = $GridMap.world_to_map(player_pos)
+	var cell_value = $GridMap.get_cell_item(map_pos.x, 0, map_pos.z)
+	
+	if cell_value == WATER:
+		_restartGame()
+
+func _process(delta):
+	if gamestart:
+		check_player_on_water()
+		
