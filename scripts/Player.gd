@@ -36,6 +36,14 @@ func _physics_process(delta: float)->void:
 			if not $ray_up.is_colliding():
 				 dir = Vector3.BACK
 				 following_woodplate = false
+	
+	if Input.is_action_just_pressed("ui_down"):
+			$move_sound.play()
+			if r0 != 180.0: r1 = -180.0
+			if not $ray_down.is_colliding():
+				 dir = Vector3.FORWARD
+				 following_woodplate = false
+	
 	if not following_woodplate:
 		if Input.is_action_just_pressed("ui_right"):
 			$move_sound.play()
