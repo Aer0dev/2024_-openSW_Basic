@@ -11,6 +11,7 @@ var dir := Vector3.ZERO
 var following_woodplate := false
 var woodplate_reference: Node = null
 var is_on_woodplate := false
+onready var move_sound = $move_sound
 
 func _ready():
 	Global.score = 0
@@ -18,22 +19,26 @@ func _ready():
 	connect("body_entered", self, "_on_Area_body_entered")
 	connect("body_exited", self, "_on_Area_body_exited")
 	
+
 func _physics_process(delta: float)->void:
 	var r0 :float= $MeshInstance.rotation_degrees.y
 	var r1 :float= $MeshInstance.rotation_degrees.y
 	
 	dir = Vector3.ZERO
 	if Input.is_action_just_pressed("ui_up"):
+			$move_sound.play()
 			if r0 != 0.0: r1 = 0.0
 			if not $ray_up.is_colliding():
 				 dir = Vector3.BACK
 				 following_woodplate = false
 	if not following_woodplate:
 		if Input.is_action_just_pressed("ui_right"):
+			$move_sound.play()
 			if r0 != -90: r1 = -90
 			if $ray_left.is_colliding() == false:
 				dir = Vector3.LEFT
 		elif Input.is_action_just_pressed("ui_left"):
+			$move_sound.play()
 			if r0 != 90: r1 = 90
 			if $ray_right.is_colliding() == false:
 				dir = Vector3.RIGHT
@@ -54,6 +59,8 @@ func _physics_process(delta: float)->void:
 		is_moving = true
 		following_woodplate = false
 		woodplate_reference = null
+
+		
 		var a = self.translation
 		var b = a + (dir*2)
 		var c = Vector3(b.x ,get_parent().player_height(b.z), b.z)
@@ -87,7 +94,7 @@ func _on_Area_body_entered(body: Node) -> void:
 		is_on_woodplate = true
 		following_woodplate = true
 		woodplate_reference = body
-	else:
+	elif body.is_in_group("vehicle"):
 		get_tree().reload_current_scene()
 
 func _on_Area_body_exited(body: Node) -> void:

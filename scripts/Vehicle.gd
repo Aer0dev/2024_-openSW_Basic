@@ -4,7 +4,7 @@ var velocity := Vector3.ZERO
 
 
 func start(speed:float, path_name:String) -> void:
-
+	add_to_group("vehicle")
 	velocity = Vector3(speed, 0, 0)
 	$MeshInstance.rotation_degrees.y = 0.0 if sign(speed) == 1 else 180.0
 	$MeshInstance.mesh = load(path_name)
