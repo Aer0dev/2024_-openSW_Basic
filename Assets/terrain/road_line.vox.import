@@ -13,4 +13,4 @@ dest_files=[ "res://.import/road_line.vox-2d8db93f5ab5760a12bbbe84d74dfa99.mesh"
 
 Scale=0.2
 GreedyMeshGenerator=true
-SnapToGround=false
+SnapToGround=true

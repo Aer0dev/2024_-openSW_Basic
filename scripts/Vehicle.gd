@@ -16,3 +16,7 @@ func start(speed:float, path_name:String) -> void:
 func _physics_process(delta:float)-> void:
 	velocity = move_and_slide(velocity, Vector3.UP)
 	
+
+
+func _on_Timer_timeout():
+	call_deferred("queue_free")

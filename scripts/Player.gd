@@ -52,7 +52,7 @@ func _physics_process(delta: float)->void:
 		var t = 0.1
 		$tw.interpolate_property(self, "translation", a, b, 0.1, Tween.TRANS_BOUNCE,Tween.EASE_OUT)	
 		$tw.interpolate_property($MeshInstance, "translation:y", 0.0, 0.4, t/2, Tween.TRANS_LINEAR, Tween.EASE_IN)
-		$tw.interpolate_property($MeshInstance, "translation:y", 0.0, 0.4, t/2, Tween.TRANS_LINEAR, Tween.EASE_IN, t/2)
+		$tw.interpolate_property($MeshInstance, "translation:y", 0.4, 0.0, t/2, Tween.TRANS_LINEAR, Tween.EASE_IN, t/2)
 		$tw.start()
 		yield($tw, "tween_all_completed")
 		is_moving = false
