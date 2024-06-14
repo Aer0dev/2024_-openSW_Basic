@@ -19,6 +19,11 @@ func _ready():
 	connect("body_entered", self, "_on_Area_body_entered")
 	connect("body_exited", self, "_on_Area_body_exited")
 	
+func _round_z(value: float) -> float:
+	return round((value - 0.9) / 2.0) * 2.0 + 0.9
+
+func _round_2(value: float) -> float:
+	return round((value-1.0) / 2.0) * 2.0 +1.0
 
 func _physics_process(delta: float)->void:
 	var r0 :float= $MeshInstance.rotation_degrees.y
@@ -60,6 +65,8 @@ func _physics_process(delta: float)->void:
 		following_woodplate = false
 		woodplate_reference = null
 
+		self.translation.x = _round_2(self.translation.x)
+		self.translation.z = _round_z(self.translation.z)
 		
 		var a = self.translation
 		var b = a + (dir*2)
@@ -71,6 +78,10 @@ func _physics_process(delta: float)->void:
 		$tw.start()
 		yield($tw, "tween_all_completed")
 		is_moving = false
+		
+		# 플레이어 위치 출력
+		print("Player Position: ", self.translation)
+
 		
 		if int(self.translation.z) > prev_z:
 			Global.score += 1
