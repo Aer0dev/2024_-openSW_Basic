@@ -1,14 +1,27 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/terrain/wood_plate.vox" type="ArrayMesh" id=1]
+[ext_resource path="res://scripts/woodplate.gd" type="Script" id=2]
 
 [sub_resource type="BoxShape" id=1]
 
-[node name="woodplate" type="Spatial"]
+[node name="woodplate" type="KinematicBody"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 7.05768, 0 )
+collision_layer = 4
+collision_mask = 4
+script = ExtResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 mesh = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 3, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0.202259, 0 )
+transform = Transform( 3.07494, 0, 1.81397e-07, 0, 4.46915, 0, 1.81397e-07, 0, 1, 0, 5.32163, 0 )
 shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

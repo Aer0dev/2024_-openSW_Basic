@@ -14,14 +14,22 @@ var z_player := 0
 var z_cam := 0
 var gamestart := false
 var car_list:Array = []
+var water_timer: Timer
+var is_in_water
 
 onready var player = $Player 
 onready var _spawner = preload("res://prefabs/Spawner.tscn")
+onready var _wspawner = preload("res://prefabs/woodSpawner.tscn")
 
 func _ready():
 	add_list()
 	redraw_board()
 	Engine.time_scale = 0 
+	water_timer = Timer.new()
+	water_timer.set_wait_time(0.05)
+	water_timer.set_one_shot(true)
+	water_timer.connect("timeout", self, "_on_water_timer_timeout")
+	add_child(water_timer)
 	
 func _startGame():
 	Engine.time_scale = 1
@@ -77,6 +85,9 @@ func redraw_board()->void:
 		if i in [ROAD, LINE]:
 			add_spawner(z)
 			
+		if i == WATER:
+			wood_spawner(z)	
+			
 		if z>4 and i == GRASS:
 			add_extra(z)
 		
@@ -92,6 +103,17 @@ func add_spawner(line)->void:
 	add_child(spawner)
 	spawner.translation = Vector3(30 * side, 1.8, (line*2) + 1)
 	spawner.start(speed, time)
+	
+	
+func wood_spawner(line)->void:
+	var side = rand_array([-1, 1])
+	var time = rand_range(2.0, 5.0)
+	var speed = rand_range(10.0, 15.0) * - side
+	
+	var wspawner = _wspawner.instance()
+	add_child(wspawner)
+	wspawner.translation = Vector3(30 * side, 1.8, (line*2) + 1)
+	wspawner.start(speed, time)	
 
 func add_extra(line)->void:
 	$Tree.set_cell_item(-8, 0, line ,randi()%4 )
@@ -148,8 +170,26 @@ func check_player_on_water():
 	var map_pos = $GridMap.world_to_map(player_pos)
 	var cell_value = $GridMap.get_cell_item(map_pos.x, 0, map_pos.z)
 	
-	if cell_value == WATER:
+	if player.is_on_woodplate:
+		is_in_water = false
+		if water_timer.is_stopped():
+			water_timer.stop()
+		#print("wood")
+	if cell_value == WATER :
+		if not is_in_water:
+			is_in_water = true
+			water_timer.start()
+		#print("water")
+	else:
+		is_in_water = false
+		if not water_timer.is_stopped():
+			water_timer.stop()
+
+		
+func _on_water_timer_timeout():
+	if is_in_water:
 		_restartGame()
+
 
 func _process(delta):
 	if gamestart:
