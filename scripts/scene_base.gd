@@ -17,6 +17,9 @@ var car_list:Array = []
 var water_timer: Timer
 var is_in_water
 
+onready var menu_node = $Player/CanvasLayer/menu
+
+
 onready var player = $Player 
 onready var _spawner = preload("res://prefabs/Spawner.tscn")
 onready var _wspawner = preload("res://prefabs/woodSpawner.tscn")
@@ -44,8 +47,8 @@ func _input(event: InputEvent) -> void:
 		_startGame()
 	if event.is_action_pressed("Restart"):		#R키 눌러서 게임 재시작
 		_restartGame()
-	if event.is_action_pressed("ui_cancel"):	#ESC누르면 일시정지
-		_stopGame()
+	#if event.is_action_pressed("ui_cancel"):	#ESC누르면 일시정지
+	#	_stopGame()
 func add_line():
 	var previous = $GridMap.get_cell_item(0, 0, new_line)
 	var i = check_next(previous)
@@ -188,7 +191,8 @@ func check_player_on_water():
 		
 func _on_water_timer_timeout():
 	if is_in_water:
-		_restartGame()
+		#_restartGame()
+		menu_node.pause()
 
 
 func _process(delta):
