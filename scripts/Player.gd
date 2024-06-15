@@ -12,6 +12,7 @@ var following_woodplate := false
 var woodplate_reference: Node = null
 var is_on_woodplate := false
 onready var move_sound = $move_sound
+onready var car_hit = $car_hit
 onready var menu_node = $CanvasLayer/menu
 
 func _ready():
@@ -115,7 +116,10 @@ func _on_Area_body_entered(body: Node) -> void:
 		following_woodplate = true
 		woodplate_reference = body
 	elif body.is_in_group("vehicle"):
+		$car_hit.play()
 		#get_tree().reload_current_scene()
+		menu_node.pause()
+	else:
 		menu_node.pause()
 		
 func _on_Area_body_exited(body: Node) -> void:

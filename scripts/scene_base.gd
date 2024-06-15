@@ -18,6 +18,7 @@ var water_timer: Timer
 var is_in_water
 
 onready var menu_node = $Player/CanvasLayer/menu
+onready var water_splash = $water_sound
 
 
 onready var player = $Player 
@@ -191,6 +192,7 @@ func check_player_on_water():
 		
 func _on_water_timer_timeout():
 	if is_in_water:
+		water_splash.play()
 		#_restartGame()
 		menu_node.pause()
 
