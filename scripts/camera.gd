@@ -1,6 +1,9 @@
 extends KinematicBody
 
 export(float) var speed := 1.0
+
+onready var menu_node = $"/root/Scene_base/Player/CanvasLayer/menu"
+
 var vel := Vector3.ZERO
 
 var new_line := 0
@@ -18,7 +21,8 @@ func _physics_process(_delta:float) -> void:
 	if diff > 5:
 		ratio = diff / 2		
 	elif diff < -10:
-		get_tree().reload_current_scene()
+		menu_node.pause()
+		#get_tree().reload_current_scene()
 	#print(diff)
 	
 	vel = lerp(vel, (speed + ratio) * Vector3.BACK, 0.8)
